@@ -26,7 +26,7 @@ permalink: /
           <div class="pillar pillar--threat">
             <div class="pillar-title">🛡️ Data Privacy</div>
             <div class="pillar-sub">Identifying and protecting data privacy</div>
-            <div class="pillar-detail">in critical applications like sensitive <a href="https://arxiv.org/abs/2402.06806">tabular data</a> and <a href="https://arxiv.org/abs/2302.06180">location data</a>.</div>
+            <div class="pillar-detail">in critical applications like sensitive <a href="https://arxiv.org/abs/2402.06806">tabular data</a> and <a href="https://arxiv.org/abs/2609.07623">location data</a>.</div>
           </div>
         </div>
 
