@@ -1,8 +1,8 @@
 # abbrs: short form shown on the homepage (Barron-style, one line per category)
 # items: full names kept for reference / CV
-# Source: files/Yuntao_Du_Resume.pdf (Academic Service, May 2026)
+# Source: files/Yuntao_Du_Resume.pdf (Academic Service, September 2026)
 - title: Program Committee
-  abbrs: "USENIX Security (2027), VLDB (2027), AsiaCCS (2027), NeurIPS (2026), ICLR (2025-2027), AISTATS (2025-2026), WWW (2026), CODASPY (2026), WSDM (2026), CIKM (2024-2026), SIGIR (2023-2026), AAAI (2023-2027)"
+  abbrs: "USENIX Security (2027), VLDB (2027), AsiaCCS (2027), NeurIPS (2026), ICLR (2025-2027), AISTATS (2025-2026), WWW (2026), CODASPY (2026), WSDM (2026), CIKM (2024-2026), SIGIR (2023-2026), IJCNN (2026-2027), TRL (2024-2025), AAAI (2023-2027), SIGIR-AP (2023-2024)"
   items:
     - "USENIX Security Symposium (USENIX Security): 2027"
     - "International Conference on Very Large Data Bases (VLDB): 2027"
@@ -15,7 +15,10 @@
     - "International Conference on Web Search and Data Mining (WSDM): 2026"
     - "ACM Conference on Information and Knowledge Management (CIKM): 2024, 2025, 2026"
     - "ACM Conference on Research and Development in Information Retrieval (SIGIR): 2023, 2024, 2025, 2026"
+    - "International Joint Conference on Neural Networks (IJCNN): 2026, 2027"
+    - "Table Representation Learning Workshop (TRL): 2024, 2025"
     - "AAAI Conference on Artificial Intelligence (AAAI): 2023, 2024, 2025, 2026, 2027"
+    - "ACM Conference on Information Retrieval in the Asia Pacific (SIGIR-AP): 2023, 2024"
 
 - title: Poster Program Committee
   abbrs: "IEEE S&P (2026)"

@@ -30,7 +30,7 @@ permalink: /
           </div>
         </div>
 
-        <p>My research has been recognized and supported by the <a href="https://www.purdue.edu/gradschool/fellowship/funding-resources-for-students/fellowships/managed-fellowships/recruitment-fellowships.html">Ross Fellowship</a> (2023&ndash;2027), <a href="https://www.purdue.edu/newsroom/purduetoday/releases/2023/Q2/purdue-invests-in-graduate-student-stipends,-raising-minima-and-launching-presidential-doctoral-excellence-awards.html">Presidential Doctoral Excellence Award</a> (2023&ndash;2027), and <a href="https://www.bobherbold.com/">Herbold Scholarship</a> (2023&ndash;2024).</p>
+        <p>My research has been recognized and supported by the <a href="https://www.purdue.edu/academics/ogsps/fellowship/">Ross Fellowship</a> (2023&ndash;2027), <a href="https://www.purdue.edu/newsroom/archive/purduetoday/releases/2023/Q2/purdue-invests-in-graduate-student-stipends,-raising-minima-and-launching-presidential-doctoral-excellence-awards.html">Presidential Doctoral Excellence Award</a> (2023&ndash;2027), and <a href="https://www.bobherbold.com/">Herbold Scholarship</a> (2023&ndash;2024).</p>
       </td>
     </tr>
   </tbody>

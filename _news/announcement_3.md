@@ -4,4 +4,4 @@ inline: true
 ---
 
 
-Three of papers on membership inference, focusing on [new shadow training paradigm](https://arxiv.org/abs/2509.06796), [LLM tokenization](https://arxiv.org/abs/2510.05699), and [LLM fine-tuning](https://arxiv.org/abs/2601.02751), have been accepted to [USENIX Security 2026](https://www.usenix.org/conference/usenixsecurity26).
+Three papers on membership inference, focusing on [a new shadow training paradigm](https://arxiv.org/abs/2509.06796), [LLM tokenization](https://arxiv.org/abs/2510.05699), and [LLM fine-tuning](https://arxiv.org/abs/2601.02751), have been accepted to [USENIX Security 2026](https://www.usenix.org/conference/usenixsecurity26).
