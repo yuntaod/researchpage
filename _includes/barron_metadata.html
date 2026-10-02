@@ -1,0 +1,76 @@
+{% assign page_title = site.first_name | append: ' ' | append: site.last_name %}
+{% if page.title and page.url != '/' %}
+  {% assign page_title = page.title | append: ' - ' | append: page_title %}
+{% endif %}
+{% assign page_description = page.description | default: site.description | strip_html | normalize_whitespace | strip %}
+{% if page.layout == 'barron-post' and page.description == nil %}
+  {% assign page_description = page.excerpt | strip_html | normalize_whitespace | strip | truncate: 180 %}
+{% endif %}
+{% assign canonical_url = page.url | absolute_url %}
+{% assign preview_image = page.og_image | default: site.og_image | absolute_url %}
+<meta name="description" content="{{ page_description | escape }}">
+<link rel="canonical" href="{{ canonical_url | escape }}">
+{% if site.serve_og_meta %}
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:description" content="{{ page_description | escape }}">
+<meta property="og:url" content="{{ canonical_url | escape }}">
+<meta property="og:site_name" content="Yuntao Du">
+<meta property="og:type" content="{% if page.layout == 'barron-post' %}article{% else %}website{% endif %}">
+<meta property="og:image" content="{{ preview_image | escape }}">
+<meta property="og:image:alt" content="Yuntao Du">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page_title | escape }}">
+<meta name="twitter:description" content="{{ page_description | escape }}">
+<meta name="twitter:image" content="{{ preview_image | escape }}">
+{% endif %}
+{% if site.serve_schema_org %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ '/' | absolute_url }}#person",
+      "name": "Yuntao Du",
+      "alternateName": "杜云滔",
+      "url": {{ '/' | absolute_url | jsonify }},
+      "image": {{ '/assets/img/yuntao.png' | absolute_url | jsonify }},
+      "jobTitle": "Ph.D. Candidate in Computer Science",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Purdue University",
+        "url": "https://www.purdue.edu/"
+      },
+      "knowsAbout": ["AI Security and Safety", "Machine Learning Privacy", "Data Privacy"],
+      "sameAs": [
+        "https://scholar.google.com/citations?user={{ site.scholar_userid }}",
+        "https://github.com/{{ site.github_username }}",
+        "https://orcid.org/{{ site.orcid_id }}",
+        {{ site.dblp_url | jsonify }},
+        "https://www.linkedin.com/in/{{ site.linkedin_username }}",
+        "https://www.semanticscholar.org/author/{{ site.semanticscholar_id }}"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ '/' | absolute_url }}#website",
+      "url": {{ '/' | absolute_url | jsonify }},
+      "name": "Yuntao Du",
+      "publisher": {"@id": "{{ '/' | absolute_url }}#person"}
+    },
+    {
+      "@type": "{% if page.url == '/' %}ProfilePage{% elsif page.layout == 'barron-post' %}BlogPosting{% else %}WebPage{% endif %}",
+      "@id": {{ canonical_url | append: '#page' | jsonify }},
+      "url": {{ canonical_url | jsonify }},
+      "name": {{ page_title | jsonify }},
+      "description": {{ page_description | jsonify }},
+      "isPartOf": {"@id": "{{ '/' | absolute_url }}#website"},
+      "{% if page.url == '/' %}mainEntity{% else %}author{% endif %}": {"@id": "{{ '/' | absolute_url }}#person"}{% if page.layout == 'barron-post' %},
+      "headline": {{ page.title | jsonify }},
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      "image": {{ preview_image | jsonify }}{% endif %}
+    }
+  ]
+}
+</script>
+{% endif %}

@@ -6,7 +6,7 @@
   <title>{% if page.title and page.url != "/" %}{{ page.title }} - {% endif %}{{ site.first_name }} {{ site.last_name }}</title>
   <meta name="author" content="{{ site.first_name }} {{ site.last_name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ site.description | strip_html | strip }}">
+  {% include barron_metadata.html %}
   <link rel="shortcut icon" href="{{ '/assets/img/favicon-32x32.png' | relative_url }}" type="image/png">
   <link rel="stylesheet" type="text/css" href="{{ '/assets/css/barron.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% if site.enable_google_analytics and site.google_analytics %}

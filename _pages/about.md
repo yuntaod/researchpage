@@ -41,7 +41,7 @@ permalink: /
   <tbody>
     <tr>
       <td class="section-cell">
-        <h2>News</h2>
+        <h2 id="news">News</h2>
         {% assign news = site.news | sort: 'date' | reverse %}
         {% assign news_size = news | size %}
         <ul class="list-compact">
