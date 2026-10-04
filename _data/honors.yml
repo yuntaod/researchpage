@@ -7,6 +7,8 @@
       url: "https://www.cs.purdue.edu/news/articles/2026/innovation-bowl-trusellm.html"
     - label: "Radiance"
       url: "https://www.radiancetechnologiesindependencebowl.com/radiance-technologies-announces-winner-of-2025-26-innovation-bowl/"
+    - label: "Machine Brief"
+      url: "https://www.machinebrief.com/news/autoverifier-a-new-era-in-tech-claim-scrutiny-u9ct"
   year: "2026"
 - name: "NDSS Fellowship"
   suffix: ", Internet Society (1 of 24 worldwide)"
