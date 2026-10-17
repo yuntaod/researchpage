@@ -1,7 +1,7 @@
 ---
 ---
 <!-- _layouts/bib.html: plain-list publication entry (Barron style) -->
-<strong>{{ entry.title }}</strong><br>
+<strong id="{{ entry.key }}">{{ entry.title }}</strong><br>
 {%- for author in entry.author_array -%}
   {%- assign author_is_self = false -%}
   {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
@@ -52,6 +52,9 @@
 {%- elsif entry.arxiv %}
 &nbsp;[<a href="https://arxiv.org/pdf/{{ entry.arxiv }}">pdf</a>]
 {%- endif %}
+{%- if entry.pdf and entry.arxiv %}
+&nbsp;[<a href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>]
+{%- endif %}
 {%- if entry.html %}
 &nbsp;[<a href="{{ entry.html }}">link</a>]
 {%- endif %}
@@ -85,8 +88,15 @@
 {%- if entry.website %}
 &nbsp;[<a href="{{ entry.website }}">website</a>]
 {%- endif %}
-{%- if entry.summary %}
-<span class="pub-note-line"><br>{% if entry.topic %}<span class="pub-topic{% if entry.topic == 'AI Security & Safety' %} pub-topic--security{% elsif entry.topic == 'Machine Learning Privacy' %} pub-topic--mlprivacy{% else %} pub-topic--dataprivacy{% endif %}">{{ entry.topic }}</span> {% endif %}<span class="pub-summary">{{ entry.summary }}</span></span>
+{%- if entry.topic or entry.summary %}
+<div class="pub-description">
+  {%- if entry.topic %}<span class="pub-topic{% if entry.topic == 'AI Security & Safety' %} pub-topic--security{% elsif entry.topic == 'Machine Learning Privacy' %} pub-topic--mlprivacy{% elsif entry.topic == 'Data Privacy' %} pub-topic--dataprivacy{% endif %}">{{ entry.topic }}</span>{% endif %}
+  {% if entry.summary %}<span class="pub-summary">{{ entry.summary }}</span>{% endif %}
+</div>
+{%- endif %}
+{%- assign impact = site.data.paper_impact[entry.key] %}
+{%- if impact %}
+{% include paper_impact.html impact=impact %}
 {%- endif %}
 {%- comment -%}
 Media coverage. BibTeX convention:

@@ -81,25 +81,40 @@ span.highlight {
   font-weight: bold;
 }
 
-/* Per-entry annotation line (topic tag + one-sentence summary); hidden by
-   default, shown inside an opt-in wrapper (homepage selected publications),
-   which also hides the mentee marker. Tag colors mirror the pillars. */
-.pub-note-line { display: none; }
-.pub-annotated .pub-note-line { display: inline; }
 .pub-annotated .marker-mentee { display: none; }
 .pub-annotated .marker-star { display: none; }
+.pub-description { margin-top: 5px; }
 .pub-topic {
   display: inline-block;
   font-size: 11px;
   line-height: 1.7;
   padding: 0 7px;
+  margin-right: 5px;
   border-radius: 9px;
   white-space: nowrap;
+  background: #f1f2f4;
+  color: #555;
 }
 .pub-topic--security { background: #fdf0f0; color: #c0392b; }
 .pub-topic--mlprivacy { background: #eef4fd; color: #1772d0; }
 .pub-topic--dataprivacy { background: #edf7ef; color: #1e8449; }
+.pub-topic--impact { background: #f2eff6; color: #6f5a7e; }
 .pub-summary { color: #555; }
+
+.pub-impact {
+  margin-top: 4px;
+  color: #555;
+}
+
+.pub-impact a {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a:focus-visible {
+  outline: 2px solid #1772d0;
+  outline-offset: 3px;
+}
 
 /* Page skeleton */
 .page-table {
@@ -666,5 +681,9 @@ sup.cite-marker a {
 
   .research-pillars {
     flex-direction: column;
+  }
+
+  .pub-topic {
+    white-space: normal;
   }
 }

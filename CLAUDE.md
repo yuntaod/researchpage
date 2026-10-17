@@ -27,3 +27,31 @@ entries grouped by year, newest year first. Within each year:
    order inside the group: first author, then co-first, then non-first.
 
 Apply this when inserting any new entry.
+
+## Impact
+
+`_data/paper_impact.yml` stores impact by bibliography entry ID, rendered by
+`_includes/paper_impact.html` as a compact line below each paper. Use the same
+rounded tag style as research categories, with a muted purple Impact tag and
+normal-size description text. Currently only AutoProfiler and AutoLocate have
+impact text.
+Use the official QGIS documentation link and numbered MIT Technology Review
+links. Keep completed outcomes and ongoing collaborations distinct.
+Research topics remain in `papers.bib`.
+
+Place each research category tag and its one-sentence description on the same
+line, allowing natural wrapping. Impact follows on its own line, using the same
+font and size for its description.
+Use "Covered by MIT Technology Review" with numbered links for AutoProfiler.
+
+RATION is the first selected publication and is listed as a manuscript without
+PDF, arXiv, or code links until those are available. Its title and author list
+match the research statement bibliography. The AI Security & Safety pillar
+introduces agent security principles before threats from LLM misuse. Link the
+phrase "risk-based access control" without repeating "(RATION)" in the overview.
+
+Publications views put RATION, PhantomMIA, and BrowseSafe++ in a Manuscripts
+section before the year or topic groups. Exclude `manuscript=true` from those
+groups to avoid duplicates. RATION remains the first homepage selected paper;
+PhantomMIA and BrowseSafe++ are in the full list. BrowseSafe++ has verified
+arXiv, code, and project links; PhantomMIA has no confirmed public link yet.
