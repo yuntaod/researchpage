@@ -43,6 +43,8 @@
 {%- endif -%}
 {%- if entry.note == "Poster" %} <em>(Poster)</em>{% endif %}
 {%- if entry.note and entry.note != "Poster" and entry.manuscript != "true" %} <span class="award-tag">{{ entry.note }}</span>{% endif %}
+{%- assign arxiv_pdf_url = entry.arxiv | prepend: 'https://arxiv.org/pdf/' -%}
+{%- unless entry.pdf == arxiv_pdf_url %}
 {%- if entry.pdf %}
 {%- if entry.pdf contains '://' %}
 &nbsp;[<a href="{{ entry.pdf }}">pdf</a>]
@@ -52,6 +54,7 @@
 {%- elsif entry.arxiv %}
 &nbsp;[<a href="https://arxiv.org/pdf/{{ entry.arxiv }}">pdf</a>]
 {%- endif %}
+{%- endunless %}
 {%- if entry.pdf and entry.arxiv %}
 &nbsp;[<a href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>]
 {%- endif %}
