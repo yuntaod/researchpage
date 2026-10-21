@@ -16,16 +16,16 @@ permalink: /
           <div class="pillar pillar--discovery">
             <div class="pillar-title">🚨 AI Security & Safety</div>
             <div class="pillar-sub">Building security principles for LLM agents</div>
-            <div class="pillar-detail">through <a href="#manuscript26ration">risk-based access control</a>, and uncovering threats from LLM misuse, such as <a href="https://arxiv.org/abs/2505.12402">automated profile inference</a>.</div>
+            <div class="pillar-detail">through <a href="https://arxiv.org/abs/2610.24311">risk-based access control</a>, and uncovering threats from LLM misuse, such as <a href="https://arxiv.org/abs/2505.12402">automated profile inference</a>.</div>
           </div>
           <div class="pillar pillar--mitigation">
             <div class="pillar-title">🔍 Machine Learning Privacy</div>
             <div class="pillar-sub">Assessing information leakage in ML models</div>
-            <div class="pillar-detail">developing principled membership inference strategies, such as <a href="https://arxiv.org/abs/2507.21412">cascading training</a> and <a href="https://arxiv.org/abs/2509.06796">imitative training</a>, and auditing privacy risks of LLMs via <a href="https://arxiv.org/abs/2510.05699">tokenizers</a> and <a href="https://arxiv.org/abs/2601.02751">fine-tuning</a>.</div>
+            <div class="pillar-detail">by developing principled membership inference strategies, such as <a href="https://arxiv.org/abs/2507.21412">cascading training</a> and <a href="https://arxiv.org/abs/2509.06796">imitative training</a>, and auditing privacy risks of LLMs via <a href="https://arxiv.org/abs/2510.05699">tokenizers</a> and <a href="https://arxiv.org/abs/2601.02751">fine-tuning</a>.</div>
           </div>
           <div class="pillar pillar--threat">
             <div class="pillar-title">🛡️ Data Privacy</div>
-            <div class="pillar-sub">Identifying and protecting data privacy</div>
+            <div class="pillar-sub">Identifying privacy risks and protecting sensitive data</div>
             <div class="pillar-detail">in critical applications like sensitive <a href="https://arxiv.org/abs/2402.06806">tabular data</a> and <a href="https://arxiv.org/abs/2609.07623">location data</a>.</div>
           </div>
         </div>
