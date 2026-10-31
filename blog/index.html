@@ -11,15 +11,18 @@ nav_order: 3
   <tbody>
     <tr>
       <td class="section-cell">
-        <h2>Blog</h2>
+        {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+        {%- for year in posts_by_year %}
+        <h3 class="section-year">{{ year.name }}</h3>
         <ul class="blog-list">
-          {% for post in site.posts %}
+          {% for post in year.items %}
           <li>
             <a class="blog-item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
             <div class="blog-item-meta">{{ post.date | date: '%B %-d, %Y' }} &nbsp;&middot;&nbsp; {{ post.content | strip_html | number_of_words | divided_by: 180 | plus: 1 }} min read</div>
           </li>
           {% endfor %}
         </ul>
+        {%- endfor %}
       </td>
     </tr>
   </tbody>

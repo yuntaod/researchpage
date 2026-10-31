@@ -16,7 +16,7 @@ _includes/scripts/mathjax.html
 assets/css/barron.css         the single stylesheet
 
 _pages/about.md               homepage (bio, pillars, news, selected pubs, honors, service)
-_pages/publications.md        /publications/ (by year; pub_bytopic.md, pub_byyear.md similar)
+_pages/publications.md        /publications/ (by year, with topic filter tags)
 blog/index.html               blog index
 _posts/*.md                   blog posts (Markdown)
 assets/bibliography/*.bib     per-post citation files

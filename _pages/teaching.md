@@ -10,8 +10,6 @@ nav: false
   <tbody>
     <tr>
       <td class="section-cell">
-        <h2>Teaching</h2>
-
         <h3 class="section-year">2026</h3>
         <ol class="bibliography">
           <li>

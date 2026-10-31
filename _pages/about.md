@@ -2,6 +2,8 @@
 layout: barron
 title: About
 permalink: /
+venue_tags: true
+venue_year: true
 ---
 
 <!-- Bio Section -->
@@ -69,14 +71,16 @@ permalink: /
   <tbody>
     <tr>
       <td class="section-cell">
-        <h2>Selected Publications</h2>
+        <div class="section-head">
+          <h2>Selected Publications</h2>
+          <a class="section-chip" href="{{ '/publications/' | relative_url }}">All publications &rarr;</a>
+        </div>
         <div class="pub-annotated">
         {% assign pillar_topics = "AI Security & Safety;Machine Learning Privacy;Data Privacy" | split: ";" %}
         {%- for t in pillar_topics %}
         {% bibliography -f {{ site.scholar.bibliography }} -q @*[selected=true&&topic={{t}}] %}
         {%- endfor %}
         </div>
-        <p class="text-meta"><a href="{{ '/publications/' | relative_url }}">See the full publication list &rarr;</a></p>
       </td>
     </tr>
   </tbody>

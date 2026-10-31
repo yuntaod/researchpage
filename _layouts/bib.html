@@ -1,7 +1,26 @@
 ---
 ---
 <!-- _layouts/bib.html: plain-list publication entry (Barron style) -->
-<strong id="{{ entry.key }}">{{ entry.title }}</strong><br>
+{%- if page.venue_tags -%}
+  {%- assign venue_full = "" -%}
+  {%- if entry.manuscript -%}
+    {%- assign venue = "Manuscript" -%}
+  {%- else -%}
+    {%- assign venue = entry.abbr | default: "" -%}
+    {%- if page.venue_year and venue != "" -%}{%- assign venue = venue | append: " " | append: entry.year -%}{%- endif -%}
+    {%- if entry.booktitle contains "Findings" -%}{%- assign venue = venue | append: " (Findings)" -%}{%- endif -%}
+    {%- if entry.booktitle -%}
+      {%- assign venue_full = entry.booktitle | split: " (" | first -%}
+    {%- elsif entry.journal -%}
+      {%- assign venue_full = entry.journal -%}
+    {%- elsif entry.howpublished -%}
+      {%- assign venue_full = entry.howpublished | split: " (" | first -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if entry.note == "Poster" -%}{%- assign venue = venue | append: " (Poster)" -%}{%- endif -%}
+  {%- if venue_full == "" -%}{%- assign venue_full = venue -%}{%- endif -%}
+{%- endif %}
+{% if page.venue_tags and venue != "" %}<span class="pub-venue">{{ venue }}</span> {% endif %}<strong id="{{ entry.key }}"{% if page.venue_tags %} data-tags="{{ entry.topic | escape }}{% if entry.tags %};{{ entry.tags | escape }}{% endif %}"{% endif %}>{{ entry.title }}</strong><br>{% if page.venue_tags %}<span class="pub-authors">{% endif %}
 {%- for author in entry.author_array -%}
   {%- assign author_is_self = false -%}
   {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
@@ -30,8 +49,42 @@
   {%- else -%}
     {{ author.first }} {{ author_last_name }}
   {%- endif -%}
-  {%- if author_markers != "" -%}<sup>{%- if author_markers contains "*" -%}{%- if entry.hide_star -%}<span class="marker-star">*</span>{%- else -%}*{%- endif -%}{%- endif -%}{%- if author_markers contains "†" -%}<span class="marker-mentee">†</span>{%- endif -%}</sup>{%- endif -%}
-{%- endfor -%}<br>
+  {%- if author_markers != "" -%}<sup>{%- if author_markers contains "*" -%}{%- if entry.hide_star -%}<span class="marker-star">⭑</span>{%- else -%}⭑{%- endif -%}{%- endif -%}{%- if author_markers contains "†" -%}<span class="marker-mentee">◊</span>{%- endif -%}</sup>{%- endif -%}
+{%- endfor -%}{% if page.venue_tags %}</span>{% endif %}<br>
+{%- if page.venue_tags %}
+{%- if venue_full != "" -%}<span class="pub-venue-full">{{ venue_full }}</span>{% endif %}
+{%- if entry.note and entry.note != "Poster" and entry.manuscript != "true" %} <span class="award-tag">{{ entry.note }}</span>{% endif %}
+{%- assign arxiv_pdf_url = entry.arxiv | prepend: 'https://arxiv.org/pdf/' -%}
+{%- assign pdf_url = "" -%}
+{%- unless entry.pdf == arxiv_pdf_url -%}
+  {%- if entry.pdf -%}
+    {%- if entry.pdf contains '://' -%}{%- assign pdf_url = entry.pdf -%}{%- else -%}{%- assign pdf_url = entry.pdf | prepend: '/assets/pdf/' | relative_url -%}{%- endif -%}
+  {%- elsif entry.arxiv -%}
+    {%- assign pdf_url = arxiv_pdf_url -%}
+  {%- endif -%}
+{%- endunless %}
+{%- capture links %}
+  {%- if pdf_url != "" %}{% include pub_link.html kind="paper" url=pdf_url label="PDF" %}{% endif %}
+  {%- if entry.pdf and entry.arxiv %}{% assign arxiv_url = entry.arxiv | prepend: 'https://arxiv.org/abs/' %}{% if pdf_url != "" %}{% assign arxiv_kind = "arxiv" %}{% else %}{% assign arxiv_kind = "paper" %}{% endif %}{% include pub_link.html kind=arxiv_kind url=arxiv_url label="arXiv" %}{% endif %}
+  {%- if entry.html %}{% include pub_link.html kind="link" url=entry.html label="Link" %}{% endif %}
+  {%- if entry.code %}{% include pub_link.html kind="code" url=entry.code label="Code" %}{% endif %}
+  {%- if entry.slides %}
+    {%- if entry.slides contains '://' %}{% assign slides_url = entry.slides %}{% else %}{% assign slides_url = entry.slides | prepend: '/assets/pdf/' | relative_url %}{% endif %}
+    {%- include pub_link.html kind="slides" url=slides_url label="Slides" %}
+  {%- endif %}
+  {%- if entry.poster %}
+    {%- if entry.poster contains '://' %}{% assign poster_url = entry.poster %}{% else %}{% assign poster_url = entry.poster | prepend: '/assets/pdf/' | relative_url %}{% endif %}
+    {%- include pub_link.html kind="slides" url=poster_url label="Poster" %}
+  {%- endif %}
+  {%- if entry.supp %}
+    {%- if entry.supp contains '://' %}{% assign supp_url = entry.supp %}{% else %}{% assign supp_url = entry.supp | prepend: '/assets/pdf/' | relative_url %}{% endif %}
+    {%- include pub_link.html kind="paper" url=supp_url label="Supp" %}
+  {%- endif %}
+  {%- if entry.blog %}{% include pub_link.html kind="blog" url=entry.blog label="Blog" %}{% endif %}
+  {%- if entry.website %}{% include pub_link.html kind="link" url=entry.website label="Website" %}{% endif %}
+{%- endcapture %}
+{%- if links != "" %}<span class="pub-links">{{ links }}</span>{% endif %}
+{%- else %}
 {%- if entry.manuscript -%}
 <em>Manuscript</em>
 {%- elsif entry.abbr -%}
@@ -91,9 +144,11 @@
 {%- if entry.website %}
 &nbsp;[<a href="{{ entry.website }}">website</a>]
 {%- endif %}
+{%- endif %}
 {%- if entry.topic or entry.summary %}
 <div class="pub-description">
-  {%- if entry.topic %}<span class="pub-topic{% if entry.topic == 'AI Security & Safety' %} pub-topic--security{% elsif entry.topic == 'Machine Learning Privacy' %} pub-topic--mlprivacy{% elsif entry.topic == 'Data Privacy' %} pub-topic--dataprivacy{% endif %}">{{ entry.topic }}</span>{% endif %}
+  {%- if entry.topic %}<span class="pub-topic{% if page.venue_tags %} pub-topic--outline{% elsif entry.topic == 'AI Security & Safety' %} pub-topic--security{% elsif entry.topic == 'Machine Learning Privacy' %} pub-topic--mlprivacy{% elsif entry.topic == 'Data Privacy' %} pub-topic--dataprivacy{% endif %}">{{ entry.topic }}</span>{% endif %}
+  {%- if page.venue_tags and entry.tags %}{% assign extra_tags = entry.tags | split: ";" %}{% for tag in extra_tags %}<span class="pub-topic pub-topic--outline">{{ tag | strip }}</span>{% endfor %}{% endif %}
   {% if entry.summary %}<span class="pub-summary">{{ entry.summary }}</span>{% endif %}
 </div>
 {%- endif %}
