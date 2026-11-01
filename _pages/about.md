@@ -12,23 +12,23 @@ venue_year: true
     <tr>
       <td class="section-cell">
         <p>I am a PhD candidate in computer science at <a href="https://www.purdue.edu/">Purdue University</a>, advised by Prof. <a href="https://www.cs.purdue.edu/homes/ninghui">Ninghui Li</a>.</p>
-        <p>I study <b>security and privacy risks</b> in machine learning and LLM agents, from both adversarial and defensive perspectives. My current research focuses on three directions:</p>
+        <p>I study <b>security and privacy risks</b> in data-driven and AI systems, from discovering new vulnerabilities to auditing and controlling them. My current research focuses on three directions:</p>
 
         <div class="research-pillars">
           <div class="pillar pillar--discovery">
-            <div class="pillar-title">🚨 AI Security & Safety</div>
-            <div class="pillar-sub">Building security principles for LLM agents</div>
-            <div class="pillar-detail">through <a href="https://arxiv.org/abs/2610.24311">risk-based access control</a>, and uncovering threats from LLM misuse, such as <a href="https://arxiv.org/abs/2505.12402">automated profile inference</a>.</div>
+            <div class="pillar-title">🚨 Threat Discovery</div>
+            <div class="pillar-sub">Uncovering new privacy and security risks</div>
+            <div class="pillar-detail">in data-driven and AI systems, such as privacy leakage from <a href="https://arxiv.org/abs/2402.06806">synthetic data</a>, <a href="https://arxiv.org/abs/2609.07623">data visualization</a>, and <a href="https://arxiv.org/abs/2505.12402">AI misuse</a>.</div>
           </div>
           <div class="pillar pillar--mitigation">
-            <div class="pillar-title">🔍 Machine Learning Privacy</div>
-            <div class="pillar-sub">Assessing information leakage in ML models</div>
-            <div class="pillar-detail">by developing principled membership inference strategies, such as <a href="https://arxiv.org/abs/2507.21412">cascading training</a> and <a href="https://arxiv.org/abs/2509.06796">imitative training</a>, and auditing privacy risks of LLMs via <a href="https://arxiv.org/abs/2510.05699">tokenizers</a> and <a href="https://arxiv.org/abs/2601.02751">fine-tuning</a>.</div>
+            <div class="pillar-title">🔍 Vulnerability Auditing</div>
+            <div class="pillar-sub">Quantifying privacy leakage in AI models</div>
+            <div class="pillar-detail">through principled membership inference attacks, such as <a href="https://arxiv.org/abs/2507.21412">cascading</a> and <a href="https://arxiv.org/abs/2509.06796">imitative</a> MIAs, and audits of LLM <a href="https://arxiv.org/abs/2510.05699">tokenizers</a> and <a href="https://arxiv.org/abs/2601.02751">fine-tuning</a>.</div>
           </div>
           <div class="pillar pillar--threat">
-            <div class="pillar-title">🛡️ Data Privacy</div>
-            <div class="pillar-sub">Identifying privacy risks and protecting sensitive data</div>
-            <div class="pillar-detail">in critical applications like sensitive <a href="https://arxiv.org/abs/2402.06806">tabular data</a> and <a href="https://arxiv.org/abs/2609.07623">location data</a>.</div>
+            <div class="pillar-title">🛡️ AI Control</div>
+            <div class="pillar-sub">Control Security and Safety Risks in AI</div>
+            <div class="pillar-detail">agents through <a href="https://arxiv.org/abs/2610.24311">system-level risk-based access control</a>.</div>
           </div>
         </div>
 
