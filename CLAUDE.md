@@ -38,7 +38,7 @@ Report", when the bib entry has no full name), and icon-only links from
 use the reference's system font stack and on-screen sizes; sizes are written
 as `calc(Npx / 1.1)` to cancel the body `zoom: 1.1`. The rest of the site stays
 on Lato. Title 15.5px weight 650; authors, venue, summary, and Impact rows 14px
-regular in gray `#4b5563` (the reference's muted color); venue tag 12px bold in
+regular in gray `#4b5563` (the reference's muted color); venue tag 12px regular (not bold) in
 the link blue `#1772d0`; topic tags 11.5px weight 600. Topic tags there use the gray
 outline style (`pub-topic--outline`), followed by the optional bib `tags`
 field (e.g. `tags = {Hacking}` or `tags = {Defense}`). The Publications page
@@ -70,9 +70,11 @@ Use "Covered by MIT Technology Review" with numbered links for AutoProfiler.
 
 RATION is the first selected publication and is listed as a manuscript without
 PDF, arXiv, or code links until those are available. Its title and author list
-match the research statement bibliography. The AI Security & Safety pillar
-introduces agent security principles before threats from LLM misuse. Link the
-phrase "risk-based access control" without repeating "(RATION)" in the overview.
+match the research statement bibliography. The homepage overview has three
+pillars that follow the research statement's arc: Threat Discovery,
+Vulnerability Auditing, and AI Control. The AI Control
+pillar links the phrase
+"system-level risk-based access control" to RATION without repeating "(RATION)".
 
 Publications views put RATION, PhantomMIA, and BrowseSafe++ in a Manuscripts
 section before the year groups. Exclude `manuscript=true` from those
