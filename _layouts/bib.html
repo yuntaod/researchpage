@@ -49,7 +49,7 @@
   {%- else -%}
     {{ author.first }} {{ author_last_name }}
   {%- endif -%}
-  {%- if author_markers != "" -%}<sup>{%- if author_markers contains "*" -%}{%- if entry.hide_star -%}<span class="marker-star">⭑</span>{%- else -%}⭑{%- endif -%}{%- endif -%}{%- if author_markers contains "†" -%}<span class="marker-mentee">◊</span>{%- endif -%}</sup>{%- endif -%}
+  {%- if author_markers != "" -%}<sup>{%- if author_markers contains "*" -%}{%- if entry.hide_star -%}<span class="marker-star">⭑</span>{%- else -%}⭑{%- endif -%}{%- endif -%}{%- if author_markers contains "†" -%}{%- include mentee_marker.html -%}{%- endif -%}</sup>{%- endif -%}
 {%- endfor -%}{% if page.venue_tags %}</span>{% endif %}<br>
 {%- if page.venue_tags %}
 {%- if venue_full != "" -%}<span class="pub-venue-full">{{ venue_full }}</span>{% endif %}

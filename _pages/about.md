@@ -46,16 +46,16 @@ venue_year: true
         <h2 id="news">News</h2>
         {% assign news = site.news | sort: 'date' | reverse %}
         {% assign news_size = news | size %}
-        <ul class="list-compact">
+        <ul class="list-compact news-list">
           {% for item in news limit: 5 %}
-          <li>{{ item.date | date: "[%Y.%m]" }} {% if item.inline %}{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}{% else %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% endif %}</li>
+          <li><span class="news-date">{{ item.date | date: "[%Y.%m]" }}</span> {% if item.inline %}{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}{% else %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% endif %}</li>
           {% endfor %}
         </ul>
         {% if news_size > 5 %}
         <div id="hidden-news" class="is-hidden">
-          <ul class="list-compact">
+          <ul class="list-compact news-list">
             {% for item in news offset: 5 %}
-            <li>{{ item.date | date: "[%Y.%m]" }} {% if item.inline %}{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}{% else %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% endif %}</li>
+            <li><span class="news-date">{{ item.date | date: "[%Y.%m]" }}</span> {% if item.inline %}{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}{% else %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% endif %}</li>
             {% endfor %}
           </ul>
         </div>
@@ -94,7 +94,7 @@ venue_year: true
         <h2>Selected Awards &amp; Honors</h2>
         <ul class="list-compact">
           {% for honor in site.data.honors %}
-          <li>{{ honor.prefix }}<strong>{% if honor.url %}<a href="{{ honor.url }}">{{ honor.name }}</a>{% else %}{{ honor.name }}{% endif %}</strong>{{ honor.suffix }}, {{ honor.year }}{% if honor.extra_links %} &nbsp;Coverage: {% for link in honor.extra_links %}[<a href="{{ link.url }}">{{ link.label }}</a>]{% unless forloop.last %} {% endunless %}{% endfor %}{% endif %}</li>
+          <li>{{ honor.prefix }}{% if honor.url %}<a href="{{ honor.url }}">{{ honor.name }}</a>{% else %}{{ honor.name }}{% endif %}{{ honor.suffix }}, {{ honor.year }}{% if honor.extra_links %} &nbsp;Coverage: {% for link in honor.extra_links %}[<a href="{{ link.url }}">{{ link.label }}</a>]{% unless forloop.last %} {% endunless %}{% endfor %}{% endif %}</li>
           {% endfor %}
         </ul>
       </td>

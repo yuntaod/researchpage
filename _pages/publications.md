@@ -20,7 +20,7 @@ nav_order: 1
           <button type="button" class="section-chip" data-filter="{{ filter | escape }}">{{ filter }}</button>
           {%- endfor %}
         </div>
-        <p class="pub-legend">⭑ equal contribution &nbsp;&nbsp; ◊ mentored student</p>
+        <p class="pub-legend">⭑ equal contribution &nbsp;&nbsp; {% include mentee_marker.html %} mentored student</p>
 
         <div class="pub-list">
         <h3 class="section-year">Manuscripts</h3>

@@ -2,7 +2,18 @@
    Base design from https://github.com/jonbarron/jonbarron.github.io
    ("Feel free to clone this code for your own personal use."). */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&display=swap');
+
+:root {
+  --font-ui: 'Google Sans Flex', Roboto, Arial, Helvetica, sans-serif;
+  --text-heading: #202124;
+  --text-body: #3c4043;
+  --text-muted: #5f6368;
+  --text-date: #80868b;
+  --link: #1a73e8;
+  --link-hover: #174ea6;
+  --rule: #e8eaed;
+}
 
 html {
   overflow-y: scroll;
@@ -10,22 +21,24 @@ html {
 
 body {
   background-color: #fff;
+  color: var(--text-body);
+  font-optical-sizing: auto;
   padding: 0 16px;
   zoom: 1.1;
 }
 
 a {
-  color: #1772d0;
+  color: var(--link);
   text-decoration: none;
 }
 
 a.text-plain {
-  color: #000;
+  color: var(--text-body);
 }
 
 a:focus,
 a:hover {
-  color: #f09228;
+  color: var(--link-hover);
   text-decoration: none;
 }
 
@@ -35,7 +48,7 @@ th,
 tr,
 p,
 a {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -49,17 +62,26 @@ li {
   line-height: 1.2;
 }
 
+li::marker {
+  color: #000;
+}
+
 strong {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   font-size: 14px;
+}
+
+strong,
+b {
+  color: var(--text-heading);
 }
 
 h2 {
   margin: 0 0 10px;
   font-weight: 700;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
-  color: #1772d0;
+  color: var(--link);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -67,9 +89,9 @@ h2 {
 h3 {
   margin: 18px 0 8px;
   font-weight: 700;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   font-size: 14px;
-  color: #333;
+  color: var(--text-heading);
 }
 
 span.highlight {
@@ -83,25 +105,41 @@ span.highlight {
 
 .pub-annotated .marker-mentee { display: none; }
 .pub-annotated .marker-star { display: none; }
+.marker-mentee {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+}
+.marker-mentee svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+}
 .pub-venue {
   display: inline-block;
   margin-right: 3px;
   padding: 0 8px;
   border-radius: 6px;
   background: #eef4fd;
-  color: #1772d0;
+  color: var(--link);
   font-size: calc(12px / 1.1);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1.7;
   white-space: nowrap;
 }
-.pub-venue-full { margin-right: 8px; }
+.pub-venue-full {
+  margin-right: 8px;
+  font-style: normal;
+}
 .pub-authors,
 .pub-venue-full,
 .pub-summary,
 .pub-impact {
-  color: #4b5563;
+  color: var(--text-muted);
   font-size: calc(14px / 1.1);
   line-height: 1.55;
 }
@@ -110,12 +148,18 @@ span.highlight {
   font-size: inherit;
   line-height: inherit;
 }
-.pub-authors a:hover { color: #f09228; }
+.pub-authors a:hover { color: var(--link-hover); }
+.pub-authors u {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
 .pub-list .bibliography > li,
 .pub-list .bibliography > li *,
 .pub-annotated .bibliography > li,
 .pub-annotated .bibliography > li * {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", sans-serif;
+  font-family: var(--font-ui);
 }
 .pub-list .bibliography > li,
 .pub-annotated .bibliography > li { font-size: calc(15px / 1.1); }
@@ -128,24 +172,24 @@ span.highlight {
 .pub-links {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 6px;
-  vertical-align: -3px;
+  gap: calc(6px / 1.1);
+  vertical-align: calc(-2px / 1.1);
 }
 .plink {
   display: inline-flex;
   align-items: center;
-  padding: 3px 7px;
+  padding: calc(2px / 1.1) calc(7px / 1.1);
   border-radius: 100px;
   background: #f1f2f4;
-  color: #555;
+  color: var(--text-muted);
 }
 .plink svg {
   display: block;
-  width: 12px;
-  height: 12px;
+  width: calc(12px / 1.1);
+  height: calc(12px / 1.1);
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.4;
+  stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -164,16 +208,17 @@ span.highlight {
 .pub-topic {
   display: inline-block;
   font-size: 11px;
+  font-weight: 400;
   line-height: 1.7;
   padding: 0 7px;
   margin-right: 5px;
   border-radius: 9px;
   white-space: nowrap;
   background: #f1f2f4;
-  color: #555;
+  color: var(--text-muted);
 }
 .pub-topic--security { background: #fdf0f0; color: #c0392b; }
-.pub-topic--mlprivacy { background: #eef4fd; color: #1772d0; }
+.pub-topic--mlprivacy { background: #eef4fd; color: var(--link); }
 .pub-topic--dataprivacy { background: #edf7ef; color: #1e8449; }
 .pub-topic--impact {
   border: 1px solid #fde68a;
@@ -181,15 +226,15 @@ span.highlight {
   background: #fef3c7;
   color: #92400e;
   font-size: calc(12px / 1.1);
-  font-weight: 700;
+  font-weight: 400;
 }
 .pub-topic--outline {
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   background: none;
-  color: #4b5563;
+  color: var(--text-muted);
   font-size: calc(11.5px / 1.1);
-  font-weight: 600;
+  font-weight: 400;
 }
 .pub-filters {
   display: flex;
@@ -199,6 +244,7 @@ span.highlight {
 .pub-filters .section-chip {
   padding: 2px 9px;
   font-size: 11.5px;
+  font-weight: 400;
 }
 .section-head {
   display: flex;
@@ -213,7 +259,7 @@ span.highlight {
   border: 1px solid #e3e3e3;
   border-radius: 100px;
   background: #fff;
-  color: #333;
+  color: var(--text-heading);
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -223,13 +269,13 @@ span.highlight {
 }
 .section-chip:hover,
 .section-chip.is-active {
-  border-color: #1772d0;
+  border-color: var(--link);
   background: #eef4fd;
-  color: #1772d0;
+  color: var(--link);
 }
 .pub-legend {
   margin: 10px 0 0;
-  color: #777;
+  color: var(--text-muted);
   font-size: 12.5px;
 }
 
@@ -243,7 +289,7 @@ span.highlight {
 }
 
 a:focus-visible {
-  outline: 2px solid #1772d0;
+  outline: 2px solid var(--link);
   outline-offset: 3px;
 }
 
@@ -259,11 +305,11 @@ a:focus-visible {
 }
 
 .page-table--narrow {
-  max-width: 800px;
+  max-width: 860px;
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
-  margin-top: 28px;
+  margin-top: 12px;
   margin-bottom: 52px;
 }
 
@@ -287,7 +333,7 @@ a:focus-visible {
 }
 
 .section-table + .section-table {
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid var(--rule);
 }
 
 .section-cell {
@@ -306,7 +352,7 @@ a:focus-visible {
   gap: 36px;
   align-items: center;
   margin-bottom: 0;
-  padding: 48px 44px 28px;
+  padding: 24px 44px 28px;
 }
 
 .header-image {
@@ -333,15 +379,15 @@ a:focus-visible {
   font-size: 38px;
   font-weight: normal;
   letter-spacing: -0.3px;
-  color: #1a1a1a;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  color: var(--text-heading);
+  font-family: var(--font-ui);
 }
 
 .header-info p {
   margin: 5px 0;
   font-size: 15px;
   line-height: 1.6;
-  color: #333;
+  color: var(--text-body);
 }
 
 .text-reset {
@@ -351,7 +397,7 @@ a:focus-visible {
 .text-meta {
   margin-top: 14px;
   font-size: 0.9em;
-  color: #555;
+  color: var(--text-muted);
 }
 
 /* Navigation menu */
@@ -361,13 +407,13 @@ a:focus-visible {
   gap: 4px;
   margin-top: 0;
   margin-bottom: 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--rule);
   padding: 4px 44px 0;
 }
 
 .nav-menu a {
   padding: 8px 16px;
-  color: #888;
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 12px;
   letter-spacing: 0.09em;
@@ -376,17 +422,43 @@ a:focus-visible {
 }
 
 .nav-menu a:hover {
-  color: #1772d0;
+  color: var(--link);
 }
 
 .nav-menu a.active {
-  color: #1772d0;
-  border-bottom: 2px solid #1772d0;
+  color: var(--link);
+  border-bottom: 2px solid var(--link);
 }
 
 /* Lists */
 .list-compact {
   margin-top: 5px;
+}
+
+.list-compact,
+.section-cell > ul {
+  padding-left: 1.2em;
+}
+
+.news-list {
+  margin: 0.4em 0 1em;
+}
+
+.news-list li {
+  margin: 0.55em 0;
+  line-height: 1.55;
+}
+
+.news-date {
+  margin-right: 0.15em;
+  color: var(--text-date);
+  white-space: nowrap;
+}
+
+.news-list strong,
+.news-list b {
+  font-size: inherit;
+  font-weight: 600;
 }
 
 .list-flush {
@@ -424,13 +496,13 @@ a:focus-visible {
 .news-toggle,
 .service-toggle {
   cursor: pointer;
-  color: #1772d0;
+  color: var(--link);
   text-decoration: underline;
 }
 
 .news-toggle:hover,
 .service-toggle:hover {
-  color: #f09228;
+  color: var(--link-hover);
 }
 
 /* Research pillars */
@@ -469,21 +541,21 @@ a:focus-visible {
 }
 
 .pillar--discovery .pillar-title { color: #c0392b; }
-.pillar--mitigation .pillar-title { color: #1772d0; }
+.pillar--mitigation .pillar-title { color: var(--link); }
 .pillar--threat .pillar-title { color: #1e8449; }
 
 .pillar-sub {
-  color: #777;
+  color: var(--text-muted);
   font-size: 11.5px;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.5;
   margin-top: 4px;
 }
 
 .pillar-detail {
-  color: #777;
+  color: var(--text-muted);
   font-size: 11.5px;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.5;
   max-height: 0;
   overflow: hidden;
@@ -500,7 +572,7 @@ a:focus-visible {
   margin: 6px 0 0;
   font-size: 12px;
   line-height: 1.55;
-  color: #444;
+  color: var(--text-body);
 }
 
 .pillar-desc a,
@@ -512,7 +584,7 @@ a:focus-visible {
 /* Publications list (jekyll-scholar output) */
 .bibliography {
   list-style: disc;
-  padding-left: 28px;
+  padding-left: 1.2em;
   margin: 0;
 }
 
@@ -522,7 +594,8 @@ a:focus-visible {
 }
 
 .bibliography em {
-  color: #333;
+  color: var(--text-muted);
+  font-style: normal;
 }
 
 sup {
@@ -550,24 +623,24 @@ sup {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.45;
-  color: #1a1a1a;
+  color: var(--text-heading);
 }
 
 .blog-item-title:hover {
-  color: #f09228;
+  color: var(--link-hover);
 }
 
 .blog-item-meta {
   margin-top: 4px;
   font-size: 12.5px;
-  color: #999;
+  color: var(--text-muted);
 }
 
 /* Blog post pages (Distill content inside the Barron column) */
 .post-header {
   margin-bottom: 22px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--rule);
 }
 
 .post-title {
@@ -575,14 +648,14 @@ sup {
   font-size: 30px;
   font-weight: 700;
   line-height: 1.3;
-  color: #1a1a1a;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  color: var(--text-heading);
+  font-family: var(--font-ui);
 }
 
 .post-meta {
   margin: 0;
   font-size: 13.5px;
-  color: #999;
+  color: var(--text-muted);
 }
 
 .post-meta a {
@@ -602,10 +675,10 @@ sup {
 .post-content u,
 .post-content td,
 .post-content th {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   font-size: 16px;
   line-height: 1.75;
-  color: #1f1f1f;
+  color: var(--text-body);
 }
 
 .post-content p {
@@ -613,29 +686,29 @@ sup {
 }
 
 .post-content h2 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   font-size: 23px;
   font-weight: 700;
   text-transform: none;
   letter-spacing: 0;
-  color: #1a1a1a;
+  color: var(--text-heading);
   margin: 36px 0 14px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--rule);
 }
 
 .post-content h3 {
   font-size: 18.5px;
-  color: #1a1a1a;
+  color: var(--text-heading);
   margin: 28px 0 10px;
 }
 
 .post-content a {
-  color: #1772d0;
+  color: var(--link);
 }
 
 .post-content a:hover {
-  color: #f09228;
+  color: var(--link-hover);
 }
 
 .post-content ul,
@@ -666,7 +739,7 @@ sup {
 .post-content .caption b {
   font-size: 13px;
   line-height: 1.55;
-  color: #888;
+  color: var(--text-muted);
   text-align: center;
 }
 
@@ -711,11 +784,11 @@ sup {
   margin: 0 0 18px;
   padding: 2px 0 2px 16px;
   border-left: 3px solid #d0d7de;
-  color: #57606a;
+  color: var(--text-muted);
 }
 
 .post-content blockquote p {
-  color: #57606a;
+  color: var(--text-muted);
 }
 
 .post-content table {
@@ -738,7 +811,7 @@ sup.cite-marker a {
 
 .post-references {
   margin-top: 36px;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid var(--rule);
   padding-top: 16px;
 }
 
@@ -752,7 +825,7 @@ sup.cite-marker a {
 .post-references li i {
   font-size: 13.5px;
   line-height: 1.6;
-  color: #555;
+  color: var(--text-muted);
 }
 
 .post-references li {
@@ -765,13 +838,13 @@ sup.cite-marker a {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 30px;
-  color: gray;
+  color: var(--text-muted);
   font-size: 13px;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: var(--font-ui);
 }
 
 .footer-note a {
-  color: gray;
+  color: var(--text-muted);
   text-decoration: underline;
 }
 
@@ -781,7 +854,7 @@ sup.cite-marker a {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 32px 24px 20px;
+    padding: 20px 24px 20px;
   }
 
   .header-image {
