@@ -35,28 +35,45 @@ render each entry with a blue venue tag before the title, the full venue name
 below the authors (the venue tag text, e.g. "Manuscript" or "Technical
 Report", when the bib entry has no full name), and icon-only links from
 `_includes/pub_link.html` right after it. Publication entries (on both pages)
-use the reference's system font stack and on-screen sizes; sizes are written
-as `calc(Npx / 1.1)` to cancel the body `zoom: 1.1`. The rest of the site stays
-on Lato. Title 15.5px weight 650; authors, venue, summary, and Impact rows 14px
-regular in gray `#4b5563` (the reference's muted color); venue tag 12px regular (not bold) in
-the link blue `#1772d0`; topic tags 11.5px weight 600. Topic tags there use the gray
+use the shared Google Sans Flex font stack, matching the rest of the site.
+Sizes are written as `calc(Npx / 1.1)` to cancel the body `zoom: 1.1`.
+Title 15.5px weight 650 without an underline; authors, venue, summary, and Impact rows 14px
+regular in the shared muted gray `#5f6368`; venue tag 12px regular (not bold) in
+the link blue `#1a73e8`; topic tags 11.5px regular weight. Topic tags there use the gray
 outline style (`pub-topic--outline`), followed by the optional bib `tags`
 field (e.g. `tags = {Hacking}` or `tags = {Defense}`). The Publications page
 filters entries by the tags in its `filters` front matter. Bib author markers
-`*` and `†` render there as superscript ⭑ (equal contribution) and ◊ (mentored
-student; Lato's lozenge, which renders at a steady size), explained once in a
-legend line below the filter tags.
+`*` and `†` render there as a superscript star (equal contribution) and a
+symmetric hollow diamond (mentored student), explained once in a legend line
+below the filter tags. `_includes/mentee_marker.html` renders the same square
+SVG diamond in the legend and author rows so its shape does not depend on fonts.
 The homepage Selected Publications heading has an "All publications →" chip
 at the top right, and `.pub-annotated` there hides `†` and `hide_star` markers.
 `venue_year: true` (set on the homepage) adds the year to the venue tag on
-lists not grouped by year. Without the flag, `_layouts/bib.html` keeps the original italic venue
+lists not grouped by year. Without the flag, `_layouts/bib.html` keeps the original venue
 line, colored topic tags, and bracket links.
+
+Publication lists use disc bullets with a compact 1.2em left indent.
+Full venue names and authors remain upright, with Yuntao's name
+underlined and bold (weight 700). Link icons render at 12px inside 26px by 16px pills,
+compensating for body zoom. All publication category, filter, and Impact labels
+use regular weight. Award entries also use regular weight.
+
+The shared stylesheet defines the font and grayscale hierarchy: Google Sans
+Flex with Roboto/Arial/Helvetica fallbacks; headings `#202124`, body text
+`#3c4043`, and auxiliary text `#5f6368`. News dates use `#80868b`; links use
+`#1a73e8` (hover `#174ea6`). All list markers are black. News and honors lists use a
+compact 1.2em indent. Research-card descriptions are upright; the shared
+860px column gives desktop cards room to keep their short descriptions on
+one line, while mobile cards stack and wrap naturally.
+The page's top margin is 12px and the desktop header's top padding is 24px,
+keeping the name closer to the top without changing spacing between sections.
 
 ## Impact
 
 `_data/paper_impact.yml` stores impact by bibliography entry ID, rendered by
 `_includes/paper_impact.html` as a compact line below each paper. Use the same
-rounded tag style as research categories, with an amber Impact tag (outline shape, bold) and
+rounded tag style as research categories, with an amber Impact tag (outline shape, regular weight) and
 normal-size description text. Currently only AutoProfiler and AutoLocate have
 impact text.
 Use the official QGIS documentation link and numbered MIT Technology Review
